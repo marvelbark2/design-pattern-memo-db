@@ -1,4 +1,6 @@
-package db;
+package strategy;
+
+import db.BaseRecord;
 
 public class StrategyClass <T extends BaseRecord> {
     private int max = 0;

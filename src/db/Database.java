@@ -1,6 +1,8 @@
 package db;
 
+import observable.Event;
 import observable.Listener;
+import strategy.Strategy;
 
 public interface Database<T extends BaseRecord> {
     T get(String id);

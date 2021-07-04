@@ -1,4 +1,6 @@
-package db;
+package strategy;
+
+import db.BaseRecord;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
