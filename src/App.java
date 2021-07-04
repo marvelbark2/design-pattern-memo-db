@@ -4,8 +4,8 @@ import model.Pokemon;
 public class App {
     public static void main(String[] args) {
         Database<Pokemon> db = InMemoryDB.getInstance("memo");
-        Pokemon spinosaur = new Pokemon("Spinosaur", 750, 350);
-        Pokemon bulbasaur = new Pokemon("Bulbasaur", 800, 200);
+        Pokemon spinosaur = new Pokemon("Spinosaur", 800, 350);
+        Pokemon bulbasaur = new Pokemon("Bulbasaur", 801, 200);
 
         db.onBeforeAdd(e -> {
             System.out.println("Value; " + e.getValue());

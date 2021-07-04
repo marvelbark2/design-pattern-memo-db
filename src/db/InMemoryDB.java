@@ -4,6 +4,7 @@ import observable.Listener;
 import observable.Observable;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class InMemoryDB {
@@ -48,14 +49,13 @@ public class InMemoryDB {
 
         @Override
         public BaseRecord selectBest(Strategy obj) {
-            StrategyClass found = new StrategyClass();
+            StrategyClass<BaseRecord> found = new StrategyClass<>();
             return db.values().stream().reduce(found.getItem(), (f, item) -> {
                 int score = (int) obj.apply(item);
 
-                if(score >= found.getMax()) {
+                if(score > found.getMax()) {
                     found.setItem(item);
                     found.setMax(score);
-                    System.out.println(score);
                 }
                 return found.getItem();
             });
