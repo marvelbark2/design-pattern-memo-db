@@ -46,6 +46,21 @@ public class InMemoryDB {
            db.values().forEach(obj);
         }
 
+        @Override
+        public BaseRecord selectBest(Strategy obj) {
+            StrategyClass found = new StrategyClass();
+            return db.values().stream().reduce(found.getItem(), (f, item) -> {
+                int score = (int) obj.apply(item);
+
+                if(score >= found.getMax()) {
+                    found.setItem(item);
+                    found.setMax(score);
+                    System.out.println(score);
+                }
+                return found.getItem();
+            });
+        }
+
 
         @Override
         public void onAfterAdd(Listener event) {
